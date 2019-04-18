@@ -1,0 +1,7 @@
+{
+  "name": "classIntro",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

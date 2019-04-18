@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click) ="toggleReorder();">
+        <ion-label>{{reorderIsDisabled ? 'Edit' :'Done'}}</ion-label>
+      </ion-button>
+      <ion-button (click)="presentAddNewPrompt();">
+        <ion-icon slot="icon-only" name ="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      To-Do
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-reorder-group [disabled]="reorderIsDisabled" (ionItemReorder)="reorderItems($event)">
+      <ion-list *ngFor = "let todo of todos">
+          <ion-item-sliding>
+              <ion-item>
+                <ion-label>
+                    {{todo}}
+                </ion-label>
+                <ion-reorder slot="end"></ion-reorder>
+              </ion-item>
+              <ion-item-options>
+                <button (click)="removeItem(todo);"> Delete</button>
+              </ion-item-options>
+            </ion-item-sliding>  
+      </ion-list>
+  </ion-reorder-group>
+ <ion-fab vertical="bottom"horizontal="end">
+   <ion-fab-button routerLink="/archived">
+    <ion-icon name="archive"></ion-icon>
+  </ion-fab-button>
+ </ion-fab>
+</ion-content>
